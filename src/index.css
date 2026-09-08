@@ -1,0 +1,349 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@300;400;500;600;700&display=swap");
+
+@import "tailwindcss";
+
+/* =========================================================
+   SPRYTECH PRINT
+   WHITE + BROWN THEME
+========================================================= */
+
+:root {
+  /* =======================================================
+     FONTS
+  ======================================================= */
+
+  --font-heading: "Fraunces", serif;
+  --font-body: "Manrope", sans-serif;
+
+  /* =======================================================
+     MAIN COLORS
+  ======================================================= */
+
+  --white: #ffffff;
+
+  --brown: #5a321f;
+
+  --brown-dark: #351d12;
+
+  --brown-medium: #75452c;
+
+  --brown-light: #a87555;
+
+  --brown-soft: #eaded6;
+
+  /* =======================================================
+     BRAND
+  ======================================================= */
+
+  --brand: #5a321f;
+
+  --brand-dark: #351d12;
+
+  --brand-light: #a87555;
+
+  /* =======================================================
+     BACKGROUNDS
+  ======================================================= */
+
+  --background: #ffffff;
+
+  --surface: #faf7f4;
+
+  --surface-dark: #f1e9e3;
+
+  --surface-brown: #5a321f;
+
+  --surface-brown-dark: #351d12;
+
+  /* =======================================================
+     TEXT
+  ======================================================= */
+
+  --heading: #5a321f;
+
+  --text: #75452c;
+
+  --text-dark: #351d12;
+
+  --text-muted: #9c7a67;
+
+  --text-white: #ffffff;
+
+  --text-white-muted: rgba(255, 255, 255, 0.72);
+
+  /* =======================================================
+     BORDER
+  ======================================================= */
+
+  --border: #eaded6;
+
+  --border-brown: #75452c;
+
+  --border-white: rgba(255, 255, 255, 0.2);
+
+  /* =======================================================
+     SHADOW
+  ======================================================= */
+
+  --shadow-sm: 0 2px 8px rgba(90, 50, 31, 0.06);
+
+  --shadow-md: 0 12px 35px rgba(90, 50, 31, 0.1);
+
+  --shadow-lg: 0 25px 60px rgba(90, 50, 31, 0.16);
+
+  /* =======================================================
+     GLOBAL
+  ======================================================= */
+
+  font-family: var(--font-body);
+
+  color: var(--text);
+
+  background-color: var(--background);
+
+  font-synthesis: none;
+
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+
+  padding: 0;
+
+  scroll-behavior: smooth;
+
+  scroll-padding-top: 80px;
+}
+
+body {
+  margin: 0;
+
+  padding: 0;
+
+  min-width: 320px;
+
+  min-height: 100vh;
+
+  overflow-x: hidden;
+
+  background: var(--background);
+
+  color: var(--text);
+
+  font-family: var(--font-body);
+}
+
+#root {
+  width: 100%;
+
+  min-height: 100vh;
+}
+
+/* =========================================================
+   HEADINGS
+========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+
+  font-family: var(--font-heading);
+
+  font-weight: 500;
+
+  color: var(--heading);
+
+  letter-spacing: -0.025em;
+}
+
+h1 {
+  line-height: 0.95;
+}
+
+h2 {
+  line-height: 1;
+}
+
+h3 {
+  line-height: 1.1;
+}
+
+/* =========================================================
+   BODY TEXT
+========================================================= */
+
+p {
+  margin: 0;
+
+  color: var(--text);
+
+  font-family: var(--font-body);
+
+  line-height: 1.7;
+}
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+a {
+  color: inherit;
+
+  text-decoration: none;
+}
+
+/* =========================================================
+   BUTTON / FORM
+========================================================= */
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+
+  font-family: var(--font-body);
+}
+
+button {
+  padding: 0;
+
+  border: 0;
+
+  background: none;
+}
+
+/* =========================================================
+   MEDIA
+========================================================= */
+
+img,
+picture,
+svg,
+video {
+  display: block;
+
+  max-width: 100%;
+}
+
+/* =========================================================
+   WHITE TEXT SECTION
+
+   Use this when section background is brown.
+========================================================= */
+
+.text-on-brown {
+  color: var(--text-white);
+}
+
+.text-on-brown h1,
+.text-on-brown h2,
+.text-on-brown h3,
+.text-on-brown h4,
+.text-on-brown h5,
+.text-on-brown h6 {
+  color: var(--text-white);
+}
+
+.text-on-brown p {
+  color: var(--text-white-muted);
+}
+
+/* =========================================================
+   UTILITY
+========================================================= */
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.text-brown {
+  color: var(--brown);
+}
+
+.text-brown-dark {
+  color: var(--brown-dark);
+}
+
+.text-white {
+  color: var(--white);
+}
+
+.bg-white {
+  background-color: var(--white);
+}
+
+.bg-brown {
+  background-color: var(--brown);
+}
+
+.bg-brown-dark {
+  background-color: var(--brown-dark);
+}
+
+/* =========================================================
+   SELECTION
+========================================================= */
+
+::selection {
+  color: var(--white);
+
+  background: var(--brown);
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--white);
+}
+
+::-webkit-scrollbar-thumb {
+  border: 2px solid var(--white);
+
+  border-radius: 100px;
+
+  background: var(--brown-light);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brown);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 80px;
+  }
+}
