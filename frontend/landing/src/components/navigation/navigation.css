@@ -1,0 +1,411 @@
+/* ======================================================
+   ROOT
+====================================================== */
+
+.site-navigation {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  z-index: 50;
+
+  pointer-events: none;
+}
+
+/* ======================================================
+   DESKTOP NOTCH
+====================================================== */
+
+.notch-menu {
+  --curve-size: 24px;
+
+  position: absolute;
+  top: 0;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: max-content;
+
+  height: 50px;
+
+  gap: 30px;
+
+  padding: 0 32px 3px;
+
+  background: #ffffff;
+
+  border-radius: 0 0 15px 15px;
+
+  box-shadow: 0 6px 18px rgba(56, 31, 12, 0.055);
+
+  pointer-events: auto;
+}
+
+/* LEFT CURVE */
+
+.notch-menu::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+
+  left: calc(var(--curve-size) * -1 + 1px);
+
+  width: var(--curve-size);
+  height: var(--curve-size);
+
+  background: radial-gradient(
+    circle at 0 100%,
+    transparent calc(var(--curve-size) - 1px),
+    #ffffff var(--curve-size)
+  );
+
+  pointer-events: none;
+}
+
+/* RIGHT CURVE */
+
+.notch-menu::after {
+  content: "";
+
+  position: absolute;
+  top: 0;
+
+  right: calc(var(--curve-size) * -1 + 1px);
+
+  width: var(--curve-size);
+  height: var(--curve-size);
+
+  background: radial-gradient(
+    circle at 100% 100%,
+    transparent calc(var(--curve-size) - 1px),
+    #ffffff var(--curve-size)
+  );
+
+  pointer-events: none;
+}
+
+/* LINKS */
+
+.notch-menu__link {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 7px 0;
+
+  white-space: nowrap;
+
+  color: #4f3c2e;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition: color 180ms ease;
+}
+
+.notch-menu__link:hover {
+  color: #84501e;
+}
+
+.notch-menu__link::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 0;
+  height: 1px;
+
+  background: #84501e;
+
+  transform: translateX(-50%);
+
+  transition: width 180ms ease;
+}
+
+.notch-menu__link:hover::after {
+  width: 100%;
+}
+
+/* ======================================================
+   MOBILE NAV
+====================================================== */
+
+.mobile-navigation {
+  display: none;
+}
+
+/* ======================================================
+   TABLET
+====================================================== */
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .notch-menu {
+    --curve-size: 21px;
+
+    height: 46px;
+
+    gap: 22px;
+
+    padding: 0 25px 2px;
+
+    border-radius: 0 0 13px 13px;
+  }
+
+  .notch-menu__link {
+    font-size: 12px;
+  }
+}
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 768px) {
+  /*
+   * IMPORTANT:
+   * Navigation now participates in document flow.
+   * This pushes the Hero underneath instead of overlaying it.
+   */
+  .site-navigation {
+    position: relative;
+
+    top: auto;
+    left: auto;
+
+    width: 100%;
+
+    padding: 8px;
+
+    background: #ffffff;
+
+    pointer-events: auto;
+  }
+
+  .notch-menu {
+    display: none;
+  }
+
+  .mobile-navigation {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+
+    pointer-events: auto;
+  }
+
+  /* TOP BAR */
+
+  .mobile-navigation__bar {
+    position: relative;
+
+    z-index: 3;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 48px;
+
+    padding: 0 8px 0 12px;
+
+    background: #ffffff;
+
+    border-radius: 10px;
+  }
+
+  /* LOGO */
+
+  .mobile-navigation__logo {
+    display: inline-flex;
+    align-items: baseline;
+
+    gap: 4px;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+  }
+
+  .mobile-navigation__logo-main {
+    color: #84501e;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    letter-spacing: -0.02em;
+  }
+
+  .mobile-navigation__logo-secondary {
+    color: #8c7158;
+
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  /* BURGER */
+
+  .mobile-navigation__toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    padding: 0;
+
+    cursor: pointer;
+
+    background: #fff8ee;
+
+    border: 0;
+    border-radius: 8px;
+
+    transition:
+      background 180ms ease,
+      transform 180ms ease;
+  }
+
+  .mobile-navigation__toggle:hover {
+    background: #f7e7d2;
+  }
+
+  .mobile-navigation__toggle:active {
+    transform: scale(0.95);
+  }
+
+  .mobile-navigation__burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 18px;
+    height: 18px;
+
+    gap: 4px;
+  }
+
+  .mobile-navigation__burger span {
+    display: block;
+
+    width: 18px;
+    height: 1.5px;
+
+    background: #84501e;
+
+    border-radius: 999px;
+
+    transform-origin: center;
+  }
+
+  /* DROPDOWN */
+
+  .mobile-navigation__menu {
+    position: absolute;
+
+    top: calc(100% + 6px);
+    left: 0;
+
+    z-index: 20;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    padding: 8px;
+
+    background: rgba(255, 255, 255, 0.98);
+
+    border: 1px solid rgba(132, 80, 30, 0.08);
+
+    border-radius: 10px;
+
+    box-shadow: 0 16px 35px rgba(55, 30, 10, 0.12);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .mobile-navigation__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    padding: 11px 12px;
+
+    color: #4f3c2e;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    text-decoration: none;
+
+    border-radius: 7px;
+
+    transition:
+      background 180ms ease,
+      color 180ms ease;
+  }
+
+  .mobile-navigation__link:hover {
+    color: #84501e;
+
+    background: #fff8ee;
+  }
+}
+
+/* ======================================================
+   SMALL MOBILE
+====================================================== */
+
+@media (max-width: 390px) {
+  .site-navigation {
+    padding: 6px;
+  }
+
+  .mobile-navigation__bar {
+    height: 44px;
+
+    padding: 0 7px 0 10px;
+  }
+
+  .mobile-navigation__logo-main {
+    font-size: 12px;
+  }
+
+  .mobile-navigation__logo-secondary {
+    font-size: 10px;
+  }
+
+  .mobile-navigation__toggle {
+    width: 32px;
+    height: 32px;
+  }
+
+  .mobile-navigation__link {
+    padding: 10px;
+
+    font-size: 12px;
+  }
+}
