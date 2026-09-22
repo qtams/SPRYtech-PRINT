@@ -13,22 +13,33 @@ import Footer from "@/sections/Footer/Footer";
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-white text-[#34271d]">
+    <div
+      className="
+        min-h-screen
+        bg-white
+        text-[#34271d]
+      "
+    >
       <main
         className="
           w-full
           bg-white
-          px-3
-          pb-10
-          pt-3
+
+          p-0
+
           sm:px-4
+          sm:pb-10
           sm:pt-4
+
           lg:px-4
           lg:pb-14
           lg:pt-5
         "
       >
-        {/* OUTER WRAPPER - DO NOT PUT overflow-hidden HERE */}
+        {/* =====================================================
+            MAIN WEBSITE
+        ====================================================== */}
+
         <div
           className="
             relative
@@ -37,17 +48,33 @@ const App = () => {
             max-w-[1900px]
           "
         >
-          {/* STICKY NAV */}
+          {/* STICKY NAVIGATION */}
+
           <Navigation />
 
-          {/* CLIPPED WEBSITE */}
+          {/* ===================================================
+              CONTENT
+              
+              MOBILE:
+              Full width
+              No outer padding
+              No rounded corners
+
+              TABLET/DESKTOP:
+              Rounded container
+          =================================================== */}
+
           <div
             className="
               relative
               w-full
               overflow-hidden
-              rounded-[24px]
+
+              rounded-none
+
               bg-[linear-gradient(180deg,#fffdf9_0%,#fff8ee_45%,#f8e7cf_100%)]
+
+              sm:rounded-[24px]
             "
           >
             <Hero />
@@ -60,14 +87,19 @@ const App = () => {
 
             <Reviews />
 
-            {/* 
+            {/*
             <Location />
             <Contact />
             */}
-
-            <Footer />
           </div>
         </div>
+
+        {/* =====================================================
+            FOOTER
+            OUTSIDE MAIN ROUNDED WEBSITE
+        ====================================================== */}
+
+        <Footer />
       </main>
     </div>
   );

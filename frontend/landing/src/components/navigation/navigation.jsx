@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import { FiArrowUpRight } from "react-icons/fi";
 
 import { navigationData } from "@/data/navigationData";
 import "./navigation.css";
@@ -11,9 +12,37 @@ const Navigation = () => {
     setIsMenuOpen(false);
   };
 
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    };
+
+    window.addEventListener("keydown", handleEscape);
+
+    return () => {
+      window.removeEventListener("keydown", handleEscape);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isMenuOpen) {
+      document.body.style.overflow = "";
+      return;
+    }
+
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
   return (
     <header className="site-navigation">
-      {/* Desktop */}
+      {/* DESKTOP */}
+
       <nav className="notch-menu" aria-label="Primary navigation">
         {navigationData.map((item) => (
           <a key={item.id} href={item.href} className="notch-menu__link">
@@ -22,7 +51,8 @@ const Navigation = () => {
         ))}
       </nav>
 
-      {/* Mobile */}
+      {/* MOBILE */}
+
       <div className="mobile-navigation">
         <div className="mobile-navigation__bar">
           <a
@@ -37,90 +67,169 @@ const Navigation = () => {
 
           <button
             type="button"
-            className="mobile-navigation__toggle"
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            className={`mobile-navigation__toggle ${
+              isMenuOpen ? "mobile-navigation__toggle--open" : ""
+            }`}
+            aria-label={
+              isMenuOpen ? "Close navigation menu" : "Open navigation menu"
+            }
             aria-expanded={isMenuOpen}
             onClick={() => setIsMenuOpen((current) => !current)}
           >
-            <div className="mobile-navigation__burger">
+            <span className="mobile-navigation__toggle-inner">
               <motion.span
-                animate={
-                  isMenuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }
-                }
-                transition={{
-                  duration: 0.2,
-                  ease: [0.4, 0, 0.2, 1],
-                }}
-              />
-
-              <motion.span
+                className="mobile-navigation__burger-line"
                 animate={
                   isMenuOpen
-                    ? { opacity: 0, scaleX: 0 }
-                    : { opacity: 1, scaleX: 1 }
+                    ? {
+                        rotate: 45,
+                        y: 5.5,
+                      }
+                    : {
+                        rotate: 0,
+                        y: 0,
+                      }
                 }
-                transition={{ duration: 0.15 }}
+                transition={{
+                  duration: 0.22,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
               />
 
               <motion.span
+                className="mobile-navigation__burger-line"
                 animate={
-                  isMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }
+                  isMenuOpen
+                    ? {
+                        opacity: 0,
+                        scaleX: 0,
+                      }
+                    : {
+                        opacity: 1,
+                        scaleX: 1,
+                      }
                 }
                 transition={{
-                  duration: 0.2,
-                  ease: [0.4, 0, 0.2, 1],
+                  duration: 0.16,
                 }}
               />
-            </div>
+
+              <motion.span
+                className="mobile-navigation__burger-line"
+                animate={
+                  isMenuOpen
+                    ? {
+                        rotate: -45,
+                        y: -5.5,
+                      }
+                    : {
+                        rotate: 0,
+                        y: 0,
+                      }
+                }
+                transition={{
+                  duration: 0.22,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              />
+            </span>
           </button>
         </div>
 
         <AnimatePresence>
           {isMenuOpen && (
-            <motion.nav
-              className="mobile-navigation__menu"
-              aria-label="Mobile navigation"
-              initial={{
-                opacity: 0,
-                y: -8,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              exit={{
-                opacity: 0,
-                y: -8,
-              }}
-              transition={{
-                duration: 0.2,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-            >
-              {navigationData.map((item, index) => (
-                <motion.a
-                  key={item.id}
-                  href={item.href}
-                  className="mobile-navigation__link"
-                  onClick={closeMenu}
-                  initial={{
-                    opacity: 0,
-                    y: -5,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  transition={{
-                    duration: 0.18,
-                    delay: index * 0.03,
-                  }}
-                >
-                  <span>{item.label}</span>
-                  <span aria-hidden="true">→</span>
-                </motion.a>
-              ))}
-            </motion.nav>
+            <>
+              {/* BACKDROP */}
+
+              <motion.button
+                type="button"
+                aria-label="Close navigation menu"
+                className="mobile-navigation__backdrop"
+                onClick={closeMenu}
+                initial={{
+                  opacity: 0,
+                }}
+                animate={{
+                  opacity: 1,
+                }}
+                exit={{
+                  opacity: 0,
+                }}
+                transition={{
+                  duration: 0.22,
+                }}
+              />
+
+              {/* MENU */}
+
+              <motion.nav
+                className="mobile-navigation__menu"
+                aria-label="Mobile navigation"
+                initial={{
+                  opacity: 0,
+                  y: -14,
+                  scale: 0.985,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                }}
+                exit={{
+                  opacity: 0,
+                  y: -10,
+                  scale: 0.99,
+                }}
+                transition={{
+                  duration: 0.24,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              >
+                <div className="mobile-navigation__menu-header">
+                  <span>Menu</span>
+
+                  <span>SPRYtech PRINT</span>
+                </div>
+
+                <div className="mobile-navigation__links">
+                  {navigationData.map((item, index) => (
+                    <motion.a
+                      key={item.id}
+                      href={item.href}
+                      className="mobile-navigation__link"
+                      onClick={closeMenu}
+                      initial={{
+                        opacity: 0,
+                        y: 8,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        y: 0,
+                      }}
+                      transition={{
+                        duration: 0.25,
+                        delay: 0.04 + index * 0.035,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                    >
+                      <span className="mobile-navigation__link-label">
+                        {item.label}
+                      </span>
+
+                      <span className="mobile-navigation__link-arrow">
+                        <FiArrowUpRight size={16} strokeWidth={1.6} />
+                      </span>
+                    </motion.a>
+                  ))}
+                </div>
+
+                <div className="mobile-navigation__menu-footer">
+                  <span>Personalized with care.</span>
+
+                  <span>Made for you.</span>
+                </div>
+              </motion.nav>
+            </>
           )}
         </AnimatePresence>
       </div>

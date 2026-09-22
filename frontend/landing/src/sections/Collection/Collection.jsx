@@ -8,7 +8,7 @@ const Collection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   /* =====================================================
-     UPDATE ACTIVE MOBILE SLIDE
+     DETECT ACTIVE SLIDE
   ====================================================== */
 
   const handleMobileScroll = () => {
@@ -55,7 +55,7 @@ const Collection = () => {
     if (!target) return;
 
     slider.scrollTo({
-      left: target.offsetLeft - (slider.clientWidth - target.offsetWidth) / 2,
+      left: target.offsetLeft - 20,
       behavior: "smooth",
     });
 
@@ -69,16 +69,17 @@ const Collection = () => {
         relative
         w-full
         overflow-hidden
-        px-4
-        py-14
-        sm:px-7
+        px-0
+        py-16
+
         sm:py-20
+
         lg:px-12
         lg:py-28
       "
       style={{
         background:
-          "linear-gradient(180deg, #fffaf3 0%, #fffaf3 58%, #faf4eb 78%, #f8f1e7 100%)",
+          "linear-gradient(180deg, #fffaf3 0%, #fffaf3 60%, #faf4eb 80%, #f8f1e7 100%)",
       }}
     >
       <div className="mx-auto w-full max-w-[1500px]">
@@ -88,111 +89,140 @@ const Collection = () => {
 
         <div
           className="
-            mb-8
-            grid
-            grid-cols-1
-            gap-5
-            border-b
-            border-[#e7dac9]
-            pb-7
-
-            sm:mb-12
-            sm:gap-7
-            sm:pb-10
-
-            lg:mb-16
-            lg:grid-cols-[1fr_420px]
-            lg:items-end
+            px-5
+            sm:px-7
+            lg:px-0
           "
         >
-          <div>
-            <p
-              className="
-                mb-3
-                text-[9px]
-                font-semibold
-                uppercase
-                tracking-[0.25em]
-                text-[#9f6734]
+          <div
+            className="
+              mb-8
 
-                sm:mb-4
-                sm:text-xs
-              "
-            >
-              Our Collection
-            </p>
+              grid
+              grid-cols-1
 
-            <h2
-              className="
-                max-w-[850px]
-                text-[36px]
-                font-medium
-                leading-[0.98]
-                tracking-[-0.045em]
-                text-[#30241c]
+              gap-5
 
-                sm:text-5xl
-                lg:text-[64px]
-              "
-            >
-              Made personal,
-              <span
+              border-b
+              border-[#e7dac9]
+
+              pb-8
+
+              sm:mb-12
+              sm:gap-7
+              sm:pb-10
+
+              lg:mb-16
+              lg:grid-cols-[1fr_420px]
+              lg:items-end
+            "
+          >
+            <div>
+              <p
                 className="
-                  ml-2
-                  font-serif
-                  font-normal
-                  italic
-                  text-[#84501e]
+                  mb-3
+
+                  text-[9px]
+                  font-semibold
+                  uppercase
+
+                  tracking-[0.26em]
+
+                  text-[#9f6734]
+
+                  sm:mb-4
+                  sm:text-xs
                 "
               >
-                just for you.
-              </span>
-            </h2>
-          </div>
+                Our Collection
+              </p>
 
-          <div className="lg:pb-1">
-            <p
-              className="
-                max-w-[390px]
-                text-[13px]
-                leading-6
-                text-[#7b6858]
-
-                sm:text-base
-                sm:leading-7
-              "
-            >
-              Thoughtful personalized pieces made for gifting, celebrations,
-              special events, and everyday moments.
-            </p>
-
-            <a
-              href="#contact"
-              className="
-                group
-                mt-4
-                inline-flex
-                items-center
-                gap-2
-                text-[13px]
-                font-medium
-                text-[#84501e]
-
-                sm:mt-6
-                sm:text-sm
-              "
-            >
-              View all products
-              <FiArrowUpRight
-                size={15}
+              <h2
                 className="
-                  transition-transform
-                  duration-300
-                  group-hover:-translate-y-0.5
-                  group-hover:translate-x-1
+                  max-w-[850px]
+
+                  text-[38px]
+                  font-medium
+
+                  leading-[0.98]
+
+                  tracking-[-0.045em]
+
+                  text-[#30241c]
+
+                  sm:text-5xl
+                  lg:text-[64px]
                 "
-              />
-            </a>
+              >
+                Made personal,
+                <span
+                  className="
+                    ml-2
+
+                    font-serif
+                    font-normal
+                    italic
+
+                    text-[#84501e]
+                  "
+                >
+                  just for you.
+                </span>
+              </h2>
+            </div>
+
+            <div className="lg:pb-1">
+              <p
+                className="
+                  max-w-[390px]
+
+                  text-[13px]
+                  leading-6
+
+                  text-[#786657]
+
+                  sm:text-base
+                  sm:leading-7
+                "
+              >
+                Thoughtful personalized pieces made for gifting, celebrations,
+                special events, and everyday moments.
+              </p>
+
+              <a
+                href="#contact"
+                className="
+                  group
+
+                  mt-4
+
+                  inline-flex
+                  items-center
+
+                  gap-2
+
+                  text-[13px]
+                  font-medium
+
+                  text-[#84501e]
+
+                  sm:mt-6
+                  sm:text-sm
+                "
+              >
+                View all products
+                <FiArrowUpRight
+                  size={15}
+                  className="
+                    transition-transform
+                    duration-300
+
+                    group-hover:-translate-y-0.5
+                    group-hover:translate-x-1
+                  "
+                />
+              </a>
+            </div>
           </div>
         </div>
 
@@ -200,27 +230,33 @@ const Collection = () => {
             MOBILE SLIDER
         ====================================================== */}
 
-        <div className="lg:hidden">
+        <div className="w-full lg:hidden">
           <div
             ref={sliderRef}
             onScroll={handleMobileScroll}
             className="
-              -mx-4
               flex
+              w-full
+
               snap-x
               snap-mandatory
-              gap-4
+
+              gap-3
+
               overflow-x-auto
               overscroll-x-contain
-              px-4
+
+              pl-5
+              pr-0
               pb-2
+
               scroll-smooth
 
               [scrollbar-width:none]
               [&::-webkit-scrollbar]:hidden
 
-              sm:-mx-7
-              sm:px-7
+              sm:gap-4
+              sm:pl-7
             "
             style={{
               WebkitOverflowScrolling: "touch",
@@ -251,11 +287,10 @@ const Collection = () => {
                 className="
                   group
 
-                  w-[calc(100vw-56px)]
-                  max-w-[360px]
-                  shrink-0
+                  basis-[86%]
+                  flex-[0_0_86%]
 
-                  snap-center
+                  snap-start
                   [scroll-snap-stop:always]
 
                   overflow-hidden
@@ -263,13 +298,16 @@ const Collection = () => {
                   rounded-[22px]
 
                   border
-                  border-[#e6d9c9]
+                  border-[#e7dac9]
 
                   bg-white
 
                   no-underline
 
-                  shadow-[0_8px_24px_rgba(80,50,25,0.05)]
+                  shadow-[0_8px_28px_rgba(70,45,20,0.06)]
+
+                  sm:basis-[58%]
+                  sm:flex-[0_0_58%]
                 "
               >
                 {/* =============================================
@@ -279,9 +317,13 @@ const Collection = () => {
                 <div
                   className="
                     relative
+
                     aspect-[16/9]
+
                     w-full
+
                     overflow-hidden
+
                     bg-[#eee2d4]
                   "
                 >
@@ -293,15 +335,37 @@ const Collection = () => {
                     className="
                       absolute
                       inset-0
+
                       h-full
                       w-full
+
                       select-none
+
                       object-cover
                       object-center
+
                       transition-transform
                       duration-700
                       ease-out
+
                       group-hover:scale-[1.025]
+                    "
+                  />
+
+                  {/* subtle overlay */}
+
+                  <div
+                    className="
+                      pointer-events-none
+
+                      absolute
+                      inset-0
+
+                      bg-gradient-to-t
+
+                      from-black/[0.08]
+                      via-transparent
+                      to-transparent
                     "
                   />
 
@@ -310,19 +374,29 @@ const Collection = () => {
                   <div
                     className="
                       absolute
+
                       left-3
                       top-3
+
                       z-10
+
                       rounded-full
+
                       bg-[#fffaf3]/95
+
                       px-2.5
                       py-1.5
+
                       text-[8px]
                       font-semibold
                       uppercase
+
                       tracking-[0.14em]
+
                       text-[#84501e]
+
                       shadow-sm
+
                       backdrop-blur-md
                     "
                   >
@@ -334,20 +408,31 @@ const Collection = () => {
                   <div
                     className="
                       absolute
+
                       right-3
                       top-3
+
                       z-10
+
                       flex
+
                       h-9
                       w-9
+
                       items-center
                       justify-center
+
                       rounded-full
+
                       bg-[#fffaf3]
+
                       text-[#84501e]
+
                       shadow-sm
+
                       transition-all
                       duration-300
+
                       group-hover:bg-[#84501e]
                       group-hover:text-white
                     "
@@ -360,13 +445,22 @@ const Collection = () => {
                     CONTENT
                 ============================================== */}
 
-                <div className="p-4">
+                <div
+                  className="
+                    px-4
+                    pb-5
+                    pt-4
+                  "
+                >
                   <h3
                     className="
-                      text-[17px]
+                      text-[18px]
                       font-medium
+
                       leading-tight
+
                       tracking-[-0.025em]
+
                       text-[#34271d]
                     "
                   >
@@ -376,85 +470,110 @@ const Collection = () => {
                   <p
                     className="
                       mt-2
+
                       text-[12px]
                       leading-5
+
                       text-[#786657]
                     "
                   >
                     {product.description}
                   </p>
 
-                  <div
+                  <span
                     className="
                       mt-4
+
                       inline-flex
                       items-center
+
                       gap-1.5
+
                       text-[11px]
                       font-medium
+
                       text-[#84501e]
                     "
                   >
                     Explore
                     <FiArrowUpRight size={13} />
-                  </div>
+                  </span>
                 </div>
               </motion.a>
             ))}
 
-            {/* END SPACER */}
+            {/* end spacing */}
+
             <div
               aria-hidden="true"
               className="
-                w-[1px]
+                w-2
                 shrink-0
               "
             />
           </div>
 
           {/* =================================================
-              MOBILE INDICATOR
+              SLIDER INDICATOR
           ================================================== */}
 
           <div
             className="
               mt-5
+
               flex
               items-center
               justify-between
+
+              px-5
+
+              sm:px-7
             "
           >
             <span
               className="
                 text-[9px]
-                font-medium
+                font-semibold
                 uppercase
+
                 tracking-[0.18em]
+
                 text-[#9a806b]
               "
             >
               Swipe to explore
             </span>
 
-            <div className="flex items-center gap-1.5">
+            <div
+              className="
+                flex
+                items-center
+
+                gap-1.5
+              "
+            >
               {productsData.map((product, index) => (
                 <button
                   key={product.id}
                   type="button"
-                  aria-label={`Go to ${product.name}`}
+                  aria-label={`View ${product.name}`}
                   onClick={() => goToSlide(index)}
                   className={`
                     h-[4px]
-                    rounded-full
+
                     border-0
+
                     p-0
+
+                    rounded-full
+
                     transition-all
                     duration-300
 
                     ${
                       activeIndex === index
                         ? "w-6 bg-[#84501e]"
-                        : "w-1.5 bg-[#d7c3ad]"
+                        : "w-1.5 bg-[#d8c6b2]"
                     }
                   `}
                 />
@@ -470,9 +589,11 @@ const Collection = () => {
         <div
           className="
             hidden
+
             lg:grid
             lg:grid-cols-12
             lg:auto-rows-[270px]
+
             lg:gap-5
           "
         >
@@ -505,13 +626,20 @@ const Collection = () => {
                 }}
                 className={`
                   group
+
                   relative
                   block
+
                   min-h-0
+
                   overflow-hidden
+
                   rounded-[24px]
+
                   bg-[#eee2d4]
+
                   no-underline
+
                   ${layoutClass}
                 `}
               >
@@ -522,12 +650,16 @@ const Collection = () => {
                   className="
                     absolute
                     inset-0
+
                     h-full
                     w-full
+
                     object-cover
+
                     transition-transform
                     duration-[900ms]
                     ease-out
+
                     group-hover:scale-[1.035]
                   "
                 />
@@ -535,55 +667,83 @@ const Collection = () => {
                 <div
                   className="
                     pointer-events-none
+
                     absolute
                     inset-0
+
                     bg-gradient-to-t
+
                     from-black/60
                     via-black/5
                     to-transparent
                   "
                 />
 
+                {/* CATEGORY */}
+
                 <div
                   className="
                     absolute
+
                     left-5
                     top-5
+
                     z-10
+
                     rounded-full
+
                     bg-[#fffaf3]/95
+
                     px-3
                     py-1.5
+
                     text-[9px]
                     font-semibold
                     uppercase
+
                     tracking-[0.15em]
+
                     text-[#84501e]
+
                     backdrop-blur-md
                   "
                 >
                   {product.category}
                 </div>
 
+                {/* ARROW */}
+
                 <div
                   className="
                     absolute
+
                     right-5
                     top-5
+
                     z-10
+
                     flex
+
                     h-10
                     w-10
+
                     items-center
                     justify-center
+
                     rounded-full
+
                     bg-[#fffaf3]
+
                     text-[#84501e]
+
                     shadow-sm
+
                     transition-all
                     duration-300
+
                     group-hover:-translate-y-1
                     group-hover:translate-x-1
+
                     group-hover:bg-[#84501e]
                     group-hover:text-white
                   "
@@ -591,13 +751,18 @@ const Collection = () => {
                   <FiArrowUpRight size={18} strokeWidth={1.8} />
                 </div>
 
+                {/* CONTENT */}
+
                 <div
                   className="
                     absolute
+
                     bottom-0
                     left-0
                     right-0
+
                     z-10
+
                     p-8
                   "
                 >
@@ -605,7 +770,9 @@ const Collection = () => {
                     className="
                       text-2xl
                       font-medium
+
                       tracking-[-0.025em]
+
                       text-white
                     "
                   >
@@ -615,10 +782,14 @@ const Collection = () => {
                   <p
                     className={`
                       mt-2
+
                       max-w-[500px]
+
                       text-sm
                       leading-6
+
                       text-white/80
+
                       ${index !== 0 ? "line-clamp-2" : ""}
                     `}
                   >
@@ -631,38 +802,83 @@ const Collection = () => {
         </div>
 
         {/* =====================================================
-            BOTTOM CTA
+            DESKTOP BOTTOM CTA
         ====================================================== */}
 
         <div
           className="
-            mt-9
-            flex
-            flex-col
-            gap-5
-            border-t
-            border-[#e7dac9]
-            pt-7
+            hidden
 
-            sm:mt-12
-            sm:flex-row
-            sm:items-center
-            sm:justify-between
-            sm:pt-8
+            lg:mt-12
+            lg:flex
+
+            lg:items-center
+            lg:justify-between
+
+            lg:gap-6
+
+            lg:border-t
+            lg:border-[#e7dac9]
+
+            lg:pt-8
           "
         >
           <p
             className="
               max-w-[500px]
-              text-[13px]
+
+              text-sm
               leading-6
+
               text-[#786657]
-              sm:text-sm
             "
           >
             Looking for something more personal? Tell us what you have in mind
             and we can help bring it to life.
           </p>
+
+          <a
+            href="#contact"
+            className="
+              group
+
+              inline-flex
+              items-center
+              justify-center
+
+              gap-2
+
+              rounded-full
+
+              bg-[#84501e]
+
+              px-6
+              py-3
+
+              text-sm
+              font-medium
+
+              text-white
+
+              transition-all
+              duration-300
+
+              hover:-translate-y-0.5
+              hover:bg-[#6f4218]
+            "
+          >
+            Start a custom order
+            <FiArrowUpRight
+              size={16}
+              className="
+                transition-transform
+                duration-300
+
+                group-hover:-translate-y-0.5
+                group-hover:translate-x-1
+              "
+            />
+          </a>
         </div>
       </div>
     </section>

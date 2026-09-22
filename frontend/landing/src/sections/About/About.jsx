@@ -10,10 +10,11 @@ const About = () => {
         w-full
         overflow-hidden
         bg-[#f8f1e7]
-        px-5
-        py-20
-        sm:px-7
-        sm:py-24
+        px-0
+        py-16
+
+        sm:py-20
+
         lg:px-12
         lg:py-32
       "
@@ -29,9 +30,9 @@ const About = () => {
           className="
             grid
             grid-cols-1
-            items-center
-            gap-12
+
             lg:grid-cols-12
+            lg:items-center
             lg:gap-16
           "
         >
@@ -42,7 +43,7 @@ const About = () => {
           <motion.div
             initial={{
               opacity: 0,
-              y: 20,
+              y: 18,
             }}
             whileInView={{
               opacity: 1,
@@ -50,14 +51,19 @@ const About = () => {
             }}
             viewport={{
               once: true,
-              amount: 0.2,
+              amount: 0.15,
             }}
             transition={{
-              duration: 0.6,
+              duration: 0.55,
               ease: [0.22, 1, 0.36, 1],
             }}
             className="
+              px-5
+
+              sm:px-7
+
               lg:col-span-5
+              lg:px-0
               lg:pr-6
             "
           >
@@ -65,12 +71,16 @@ const About = () => {
 
             <p
               className="
-                mb-4
-                text-[10px]
+                mb-3
+
+                text-[9px]
                 font-semibold
                 uppercase
-                tracking-[0.28em]
+                tracking-[0.26em]
+
                 text-[#a36d39]
+
+                sm:mb-4
                 sm:text-xs
               "
             >
@@ -82,19 +92,24 @@ const About = () => {
             <h2
               className="
                 max-w-[600px]
-                text-4xl
+
+                text-[38px]
                 font-medium
+
                 leading-[0.98]
+
                 tracking-[-0.045em]
+
                 text-[#34271d]
+
                 sm:text-5xl
+
                 lg:text-[60px]
               "
             >
-              Turning ideas into
+              Turning ideas into{" "}
               <span
                 className="
-                  ml-2
                   font-serif
                   font-normal
                   italic
@@ -107,101 +122,46 @@ const About = () => {
 
             {/* DESCRIPTION */}
 
-            <p
-              className="
-                mt-7
-                max-w-[520px]
-                text-sm
-                leading-7
-                text-[#786657]
-                sm:text-base
-              "
-            >
-              We create personalized pieces through precise laser engraving and
-              thoughtful design. From everyday items to meaningful gifts, every
-              piece is made to feel personal, useful, and lasting.
-            </p>
-
-            <p
+            <div
               className="
                 mt-5
                 max-w-[520px]
-                text-sm
-                leading-7
-                text-[#786657]
-                sm:text-base
+
+                space-y-4
+
+                sm:mt-7
+                sm:space-y-5
               "
             >
-              Whether it is for a celebration, business, event, giveaway, or
-              everyday use, we help turn your idea into something that feels
-              uniquely yours.
-            </p>
+              <p
+                className="
+                  text-[13px]
+                  leading-6
+                  text-[#786657]
 
-            {/* =================================================
-                VALUES
-            ================================================== */}
+                  sm:text-base
+                  sm:leading-7
+                "
+              >
+                We create personalized pieces through precise laser engraving
+                and thoughtful design. From everyday items to meaningful gifts,
+                every piece is made to feel personal, useful, and lasting.
+              </p>
 
-            <div
-              className="
-                mt-9
-                grid
-                grid-cols-1
-                gap-6
-                border-t
-                border-[#ddcfbe]
-                pt-7
-                sm:grid-cols-2
-              "
-            >
-              <div>
-                <p
-                  className="
-                    text-[10px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.18em]
-                    text-[#a36d39]
-                  "
-                >
-                  Thoughtful Design
-                </p>
+              <p
+                className="
+                  text-[13px]
+                  leading-6
+                  text-[#786657]
 
-                <p
-                  className="
-                    mt-2
-                    text-sm
-                    leading-6
-                    text-[#5f4d40]
-                  "
-                >
-                  Personalized with care and attention to the smallest details.
-                </p>
-              </div>
-
-              <div>
-                <p
-                  className="
-                    text-[10px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.18em]
-                    text-[#a36d39]
-                  "
-                >
-                  Quality Finish
-                </p>
-
-                <p
-                  className="
-                    mt-2
-                    text-sm
-                    leading-6
-                    text-[#5f4d40]
-                  "
-                >
-                  Clean and precise engraving designed to look good and last.
-                </p>
-              </div>
+                  sm:text-base
+                  sm:leading-7
+                "
+              >
+                Whether it is for a celebration, business, event, giveaway, or
+                everyday use, we help turn your idea into something that feels
+                uniquely yours.
+              </p>
             </div>
 
             {/* CTA */}
@@ -210,27 +170,29 @@ const About = () => {
               href="#contact"
               className="
                 group
-                mt-9
+
+                mt-6
+
                 inline-flex
                 items-center
                 gap-2
-                border-b
-                border-[#84501e]/30
-                pb-1
-                text-sm
+
+                text-[12px]
                 font-medium
+
                 text-[#84501e]
-                transition-colors
-                duration-300
-                hover:border-[#84501e]
+
+                sm:mt-8
+                sm:text-sm
               "
             >
               Start your project
               <FiArrowUpRight
-                size={17}
+                size={15}
                 className="
                   transition-transform
                   duration-300
+
                   group-hover:-translate-y-0.5
                   group-hover:translate-x-1
                 "
@@ -239,39 +201,58 @@ const About = () => {
           </motion.div>
 
           {/* =====================================================
-              RIGHT IMAGE
+              IMAGE
+
+              MOBILE = FULL WIDTH
+              DESKTOP = ROUNDED
           ====================================================== */}
 
           <motion.div
             initial={{
               opacity: 0,
-              x: 24,
+              y: 22,
             }}
             whileInView={{
               opacity: 1,
-              x: 0,
+              y: 0,
             }}
             viewport={{
               once: true,
-              amount: 0.2,
+              amount: 0.15,
             }}
             transition={{
-              duration: 0.7,
-              delay: 0.08,
+              duration: 0.65,
+              delay: 0.05,
               ease: [0.22, 1, 0.36, 1],
             }}
             className="
               relative
+
+              mt-10
+              w-full
+
               lg:col-span-7
+              lg:mt-0
             "
           >
             <div
               className="
                 relative
-                aspect-[4/3]
+
+                aspect-[16/10]
+
+                w-full
+
                 overflow-hidden
-                rounded-[28px]
+
                 bg-[#e9dccd]
+
+                rounded-none
+
+                sm:aspect-[16/9]
+
+                lg:aspect-[4/3]
+                lg:rounded-[28px]
               "
             >
               <img
@@ -279,40 +260,82 @@ const About = () => {
                 alt="Laser engraving personalized products"
                 loading="lazy"
                 className="
+                  absolute
+                  inset-0
+
                   h-full
                   w-full
+
                   object-cover
+                  object-center
+
                   transition-transform
                   duration-[1200ms]
                   ease-out
+
                   hover:scale-[1.025]
                 "
               />
 
-              {/* SUBTLE IMAGE OVERLAY */}
-
               <div
                 className="
                   pointer-events-none
+
                   absolute
                   inset-0
+
                   bg-gradient-to-t
-                  from-[#3b2418]/10
+
+                  from-[#3b2418]/15
                   via-transparent
                   to-transparent
                 "
               />
+
+              {/* MOBILE IMAGE LABEL */}
+
+              <div
+                className="
+                  absolute
+                  bottom-4
+                  left-5
+
+                  rounded-full
+
+                  bg-[#fffaf3]/90
+
+                  px-3
+                  py-1.5
+
+                  text-[8px]
+                  font-semibold
+                  uppercase
+
+                  tracking-[0.16em]
+
+                  text-[#84501e]
+
+                  shadow-sm
+                  backdrop-blur-md
+
+                  lg:hidden
+                "
+              >
+                Laser Personalization
+              </div>
             </div>
 
-            {/* SMALL CAPTION */}
+            {/* DESKTOP CAPTION */}
 
             <div
               className="
-                mt-4
-                flex
-                items-center
-                justify-between
-                gap-4
+                hidden
+
+                lg:mt-4
+                lg:flex
+                lg:items-center
+                lg:justify-between
+                lg:gap-4
               "
             >
               <p
@@ -328,14 +351,177 @@ const About = () => {
 
               <p
                 className="
-                  hidden
                   text-xs
                   text-[#9b8069]
-                  sm:block
                 "
               >
                 Made with precision and care
               </p>
+            </div>
+          </motion.div>
+
+          {/* =====================================================
+              VALUES
+
+              MOBILE = BELOW IMAGE
+              DESKTOP = BELOW LEFT CONTENT POSITION
+          ====================================================== */}
+
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 16,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.15,
+            }}
+            transition={{
+              duration: 0.5,
+              delay: 0.08,
+            }}
+            className="
+              mt-0
+
+              px-5
+
+              sm:px-7
+
+              lg:col-span-5
+              lg:mt-[-120px]
+              lg:px-0
+              lg:pr-6
+            "
+          >
+            <div
+              className="
+                border-t
+                border-[#ddcfbe]
+              "
+            >
+              {/* VALUE 1 */}
+
+              <div
+                className="
+                  grid
+                  grid-cols-[28px_minmax(0,1fr)]
+
+                  gap-4
+
+                  border-b
+                  border-[#ddcfbe]
+
+                  py-6
+                "
+              >
+                <span
+                  className="
+                    pt-0.5
+
+                    text-[9px]
+                    font-medium
+
+                    tracking-[0.14em]
+
+                    text-[#b29a83]
+                  "
+                >
+                  01
+                </span>
+
+                <div>
+                  <p
+                    className="
+                      text-[10px]
+                      font-semibold
+                      uppercase
+                      tracking-[0.18em]
+
+                      text-[#a36d39]
+                    "
+                  >
+                    Thoughtful Design
+                  </p>
+
+                  <p
+                    className="
+                      mt-2
+
+                      text-[13px]
+                      leading-6
+
+                      text-[#5f4d40]
+
+                      sm:text-sm
+                    "
+                  >
+                    Personalized with care and attention to the smallest
+                    details.
+                  </p>
+                </div>
+              </div>
+
+              {/* VALUE 2 */}
+
+              <div
+                className="
+                  grid
+                  grid-cols-[28px_minmax(0,1fr)]
+
+                  gap-4
+
+                  py-6
+                "
+              >
+                <span
+                  className="
+                    pt-0.5
+
+                    text-[9px]
+                    font-medium
+
+                    tracking-[0.14em]
+
+                    text-[#b29a83]
+                  "
+                >
+                  02
+                </span>
+
+                <div>
+                  <p
+                    className="
+                      text-[10px]
+                      font-semibold
+                      uppercase
+                      tracking-[0.18em]
+
+                      text-[#a36d39]
+                    "
+                  >
+                    Quality Finish
+                  </p>
+
+                  <p
+                    className="
+                      mt-2
+
+                      text-[13px]
+                      leading-6
+
+                      text-[#5f4d40]
+
+                      sm:text-sm
+                    "
+                  >
+                    Clean and precise engraving designed to look good and last.
+                  </p>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>

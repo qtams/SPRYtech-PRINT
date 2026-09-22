@@ -47,6 +47,10 @@ const reviews = [
 ];
 
 export default function Reviews() {
+  /*
+    KEEPING YOUR ORIGINAL CAROUSEL.
+    Duplicate reviews for continuous movement.
+  */
   const carouselReviews = [...reviews, ...reviews];
 
   return (
@@ -56,9 +60,12 @@ export default function Reviews() {
         relative
         w-full
         overflow-hidden
-        py-24
-        sm:py-28
-        md:py-32
+
+        px-0
+        py-16
+
+        sm:py-24
+        md:py-28
         lg:py-36
       "
       style={{
@@ -90,19 +97,27 @@ export default function Reviews() {
         className="
           relative
           z-10
+
           mx-auto
+          w-full
           max-w-3xl
-          px-6
+
+          px-5
+
           text-center
+
+          sm:px-7
         "
       >
         <p
           className="
-            text-[10px]
+            text-[9px]
             font-semibold
             uppercase
-            tracking-[0.32em]
+            tracking-[0.3em]
+
             text-[#a36d39]
+
             sm:text-xs
           "
         >
@@ -111,14 +126,20 @@ export default function Reviews() {
 
         <h2
           className="
-            mt-5
-            text-4xl
+            mt-4
+
+            text-[38px]
             font-medium
             leading-[0.96]
-            tracking-[-0.04em]
+            tracking-[-0.045em]
+
             text-[#34271d]
+
+            sm:mt-5
             sm:text-5xl
+
             md:text-6xl
+
             lg:text-[64px]
           "
         >
@@ -126,9 +147,11 @@ export default function Reviews() {
           <span
             className="
               block
+
               font-serif
               font-normal
               italic
+
               text-[#84501e]
             "
           >
@@ -139,12 +162,19 @@ export default function Reviews() {
         <p
           className="
             mx-auto
-            mt-6
+
+            mt-5
+
             max-w-[560px]
-            text-sm
-            leading-7
+
+            text-[13px]
+            leading-6
+
             text-[#786657]
+
+            sm:mt-6
             sm:text-base
+            sm:leading-7
           "
         >
           A few words from customers who turned their ideas into personalized
@@ -153,30 +183,38 @@ export default function Reviews() {
       </motion.div>
 
       {/* =================================================
-          CAROUSEL
+          ORIGINAL AUTOMATIC CAROUSEL
       ================================================== */}
 
       <div
         className="
           relative
           z-10
-          mt-14
+
+          mt-10
           w-full
-          sm:mt-16
+
+          sm:mt-14
+          lg:mt-16
         "
         style={{
           WebkitMaskImage:
-            "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+            "linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)",
           maskImage:
-            "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+            "linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)",
         }}
       >
         <motion.div
           className="
             flex
             w-max
-            gap-5
-            px-5
+
+            gap-3
+
+            px-3
+
+            sm:gap-5
+            sm:px-5
           "
           animate={{
             x: ["0%", "-50%"],
@@ -192,25 +230,40 @@ export default function Reviews() {
               key={`${review.id}-${index}`}
               className="
                 group
-                w-[290px]
+
+                w-[82vw]
+                max-w-[300px]
                 shrink-0
-                rounded-[20px]
+
+                rounded-[18px]
+
                 border
                 border-[#eadfd2]
+
                 bg-white/90
+
                 p-5
-                shadow-[0_10px_35px_rgba(59,36,24,0.055)]
+
+                shadow-[0_8px_28px_rgba(59,36,24,0.05)]
+
                 backdrop-blur-sm
+
                 transition-all
                 duration-300
+
                 hover:-translate-y-1
                 hover:border-[#d9c2a7]
                 hover:shadow-[0_16px_45px_rgba(59,36,24,0.08)]
+
                 sm:w-[340px]
+                sm:max-w-none
+                sm:rounded-[20px]
                 sm:p-6
               "
             >
-              {/* PROFILE */}
+              {/* =================================================
+                  PROFILE
+              ================================================== */}
 
               <div
                 className="
@@ -222,27 +275,42 @@ export default function Reviews() {
                 <div
                   className="
                     flex
-                    h-11
-                    w-11
+
+                    h-10
+                    w-10
+
                     shrink-0
+
                     items-center
                     justify-center
+
                     rounded-full
+
                     border
                     border-[#e5d5c2]
+
                     bg-[#f8f1e7]
+
                     text-[#84501e]
+
+                    sm:h-11
+                    sm:w-11
                   "
                 >
-                  <FiUser size={19} strokeWidth={1.5} />
+                  <FiUser size={18} strokeWidth={1.5} />
                 </div>
 
-                <div>
+                <div className="min-w-0">
                   <h3
                     className="
-                      text-sm
+                      truncate
+
+                      text-[13px]
                       font-semibold
+
                       text-[#34271d]
+
+                      sm:text-sm
                     "
                   >
                     {review.name}
@@ -251,8 +319,12 @@ export default function Reviews() {
                   <p
                     className="
                       mt-0.5
-                      text-[11px]
+
+                      text-[10px]
+
                       text-[#9a806b]
+
+                      sm:text-[11px]
                     "
                   >
                     {review.date}
@@ -260,46 +332,75 @@ export default function Reviews() {
                 </div>
               </div>
 
-              {/* STARS */}
+              {/* =================================================
+                  STARS
+              ================================================== */}
 
               <div
                 className="
-                  mt-5
+                  mt-4
+
                   flex
                   gap-1
+
                   text-[#c99545]
+
+                  sm:mt-5
                 "
               >
                 {[1, 2, 3, 4, 5].map((star) => (
-                  <span key={star} className="text-sm">
+                  <span
+                    key={star}
+                    className="
+                      text-[12px]
+                      sm:text-sm
+                    "
+                  >
                     ★
                   </span>
                 ))}
               </div>
 
-              {/* TITLE */}
+              {/* =================================================
+                  TITLE
+              ================================================== */}
 
               <h4
                 className="
-                  mt-4
+                  mt-3
+
                   font-serif
-                  text-[24px]
+
+                  text-[22px]
                   font-medium
-                  leading-[1]
+
+                  leading-[1.05]
+
                   text-[#34271d]
+
+                  sm:mt-4
+                  sm:text-[24px]
                 "
               >
                 {review.title}
               </h4>
 
-              {/* REVIEW */}
+              {/* =================================================
+                  REVIEW
+              ================================================== */}
 
               <p
                 className="
-                  mt-4
-                  text-sm
-                  leading-6
+                  mt-3
+
+                  text-[12px]
+                  leading-5
+
                   text-[#665244]
+
+                  sm:mt-4
+                  sm:text-sm
+                  sm:leading-6
                 "
               >
                 {review.text}
@@ -330,13 +431,23 @@ export default function Reviews() {
         className="
           relative
           z-10
-          mt-14
+
+          mt-10
+
+          px-5
+
           text-center
-          text-[10px]
+
+          text-[8px]
           font-medium
           uppercase
-          tracking-[0.28em]
+          tracking-[0.24em]
+
           text-[#9a806b]
+
+          sm:mt-14
+          sm:text-[10px]
+          sm:tracking-[0.28em]
         "
       >
         Personalized with care, one detail at a time.
