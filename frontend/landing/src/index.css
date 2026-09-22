@@ -1,9 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap");
+
 @import "tailwindcss";
+
+/* =========================================================
+   BASE COLORS
+   ========================================================= */
+
+:root {
+  --page-bg: #f8f1e7;
+  --white: #ffffff;
+
+  --cream: #f8f1e7;
+  --cream-light: #fbf6ef;
+
+  --text-main: #34271d;
+  --text-soft: #786657;
+
+  --accent: #84501e;
+
+  --serif: "Cormorant Garamond", serif;
+  --sans: "Inter", sans-serif;
+}
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 html {
   scroll-behavior: smooth;
-  background: #ffffff;
+
+  background: var(--page-bg);
 }
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+/* =========================================================
+   BODY
+   MAIN WEBSITE BASE COLOR = CREAM
+   ========================================================= */
 
 body {
   margin: 0;
@@ -11,8 +56,11 @@ body {
   min-width: 320px;
   min-height: 100vh;
 
-  background: #ffffff;
-  color: #34271d;
+  background: var(--page-bg);
+
+  color: var(--text-main);
+
+  font-family: var(--sans);
 
   overflow-x: hidden;
 
@@ -20,13 +68,24 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* IMPORTANT:
+   Root must also use cream.
+   Otherwise white can show between sections.
+*/
+
 #root {
   min-height: 100vh;
-  background: #ffffff;
+
+  background: var(--page-bg);
 }
+
+/* =========================================================
+   BASIC ELEMENTS
+   ========================================================= */
 
 img {
   display: block;
+
   max-width: 100%;
 }
 
@@ -37,4 +96,172 @@ a {
 
 button {
   font: inherit;
+}
+
+a {
+  color: inherit;
+
+  text-decoration: none;
+}
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+.font-serif {
+  font-family: var(--serif);
+}
+
+.font-sans {
+  font-family: var(--sans);
+}
+
+/* =========================================================
+   GENERAL SECTION
+   ========================================================= */
+
+section {
+  position: relative;
+}
+
+/* =========================================================
+   SERVICES
+   WHITE SECTION
+   ========================================================= */
+
+#services {
+  position: relative;
+
+  isolation: isolate;
+
+  overflow: hidden;
+
+  /*
+    Main Services background is WHITE.
+  */
+  background: #ffffff !important;
+}
+
+/* =========================================================
+   SERVICES TOP BLEND
+
+   Cream from the BODY gradually blends into
+   the white Services section.
+   ========================================================= */
+
+#services::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 150px;
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  background: linear-gradient(
+    to bottom,
+    #f8f1e7 0%,
+    rgba(248, 241, 231, 0.88) 15%,
+    rgba(248, 241, 231, 0.58) 38%,
+    rgba(248, 241, 231, 0.25) 65%,
+    rgba(248, 241, 231, 0) 100%
+  );
+}
+
+/* =========================================================
+   SERVICES BOTTOM BLEND
+
+   White Services gradually returns to cream.
+   ========================================================= */
+
+#services::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  height: 150px;
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  background: linear-gradient(
+    to top,
+    #f8f1e7 0%,
+    rgba(248, 241, 231, 0.88) 15%,
+    rgba(248, 241, 231, 0.58) 38%,
+    rgba(248, 241, 231, 0.25) 65%,
+    rgba(248, 241, 231, 0) 100%
+  );
+}
+
+/* Keep Services content above gradients */
+
+#services > * {
+  position: relative;
+
+  z-index: 1;
+}
+
+/* =========================================================
+   OPTIONAL SECTION BACKGROUNDS
+
+   You can control every section separately from here.
+   ========================================================= */
+
+#home {
+  background: #ffffff;
+}
+
+#collection {
+  background: #fffaf3;
+}
+
+/*
+#about {
+  background: #ffffff;
+}
+
+#reviews {
+  background: #f8f1e7;
+}
+
+#location {
+  background: #ffffff;
+}
+
+#contact {
+  background: #f8f1e7;
+}
+*/
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+  #services::before,
+  #services::after {
+    height: 100px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

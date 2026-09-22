@@ -2,55 +2,60 @@ export const productsData = [
   {
     id: "ballpens",
     name: "Personalized Ballpens",
-    category: "Personalized Essentials",
+    category: "Writing",
     description:
-      "Custom engraved pens made for gifts, events, giveaways, and everyday use.",
-    icon: "pen",
+      "Elegant personalized pens made for gifts, events, keepsakes, and everyday use.",
+    image: "/images/products/ballpens-products.png",
     href: "#contact",
   },
+
   {
-    id: "keychains",
-    name: "Custom Keychains",
-    category: "Personalized Keepsakes",
+    id: "fan",
+    name: "Personalized Fan",
+    category: "Everyday Essentials",
     description:
-      "Meaningful keepsakes customized with names, logos, messages, or special designs.",
-    icon: "key",
+      "A useful and thoughtful personalized fan made for everyday comfort.",
+    image: "/images/products/fan-products.png",
     href: "#contact",
   },
-  {
-    id: "flasks",
-    name: "Personalized Flasks",
-    category: "Premium Gifts",
-    description:
-      "Elegant personalized flasks crafted for memorable gifts and special occasions.",
-    icon: "flask",
-    href: "#contact",
-  },
+
   {
     id: "hairbrush",
-    name: "Custom Hair Brushes",
-    category: "Personalized Beauty",
+    name: "Personalized Hairbrush",
+    category: "Personal Care",
     description:
-      "Wooden brushes customized with names, messages, and thoughtful engraved details.",
-    icon: "brush",
+      "A simple everyday essential made more special with your personal touch.",
+    image: "/images/products/hairbrush-products.png",
     href: "#contact",
   },
+
   {
-    id: "fans",
-    name: "Personalized Fans",
-    category: "Event Essentials",
+    id: "keychain",
+    name: "Personalized Keychain",
+    category: "Keepsakes",
     description:
-      "Custom pieces designed for weddings, celebrations, giveaways, and special events.",
-    icon: "fan",
+      "A small personalized keepsake made to carry meaningful memories anywhere.",
+    image: "/images/products/keychain-products.png",
     href: "#contact",
   },
+
   {
-    id: "custom-gifts",
-    name: "Custom Gifts",
-    category: "Made For You",
+    id: "mug",
+    name: "Personalized Mug",
+    category: "Drinkware",
     description:
-      "Have something different in mind? Let us create a personalized piece for you.",
-    icon: "gift",
+      "A personalized mug made for gifts, celebrations, work, and everyday moments.",
+    image: "/images/products/mug-products.png",
+    href: "#contact",
+  },
+
+  {
+    id: "tumbler",
+    name: "Personalized Tumbler",
+    category: "Drinkware",
+    description:
+      "Personalized drinkware made for work, travel, gifting, and daily use.",
+    image: "/images/products/thumbler-products.png",
     href: "#contact",
   },
 ];

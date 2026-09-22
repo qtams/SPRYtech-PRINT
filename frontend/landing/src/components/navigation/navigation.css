@@ -3,13 +3,20 @@
 ====================================================== */
 
 .site-navigation {
-  position: absolute;
+  position: sticky;
+
   top: 0;
   left: 0;
 
   width: 100%;
 
-  z-index: 50;
+  /*
+   * Desktop nav overlays the page,
+   * so it should not create extra vertical space.
+   */
+  height: 0;
+
+  z-index: 9999;
 
   pointer-events: none;
 }
@@ -22,6 +29,7 @@
   --curve-size: 24px;
 
   position: absolute;
+
   top: 0;
   left: 50%;
 
@@ -32,7 +40,6 @@
   justify-content: center;
 
   width: max-content;
-
   height: 50px;
 
   gap: 30px;
@@ -46,14 +53,21 @@
   box-shadow: 0 6px 18px rgba(56, 31, 12, 0.055);
 
   pointer-events: auto;
+
+  transition:
+    background-color 300ms ease,
+    box-shadow 300ms ease;
 }
 
-/* LEFT CURVE */
+/* ======================================================
+   LEFT CURVE
+====================================================== */
 
 .notch-menu::before {
   content: "";
 
   position: absolute;
+
   top: 0;
 
   left: calc(var(--curve-size) * -1 + 1px);
@@ -70,12 +84,15 @@
   pointer-events: none;
 }
 
-/* RIGHT CURVE */
+/* ======================================================
+   RIGHT CURVE
+====================================================== */
 
 .notch-menu::after {
   content: "";
 
   position: absolute;
+
   top: 0;
 
   right: calc(var(--curve-size) * -1 + 1px);
@@ -92,12 +109,15 @@
   pointer-events: none;
 }
 
-/* LINKS */
+/* ======================================================
+   LINKS
+====================================================== */
 
 .notch-menu__link {
   position: relative;
 
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
 
@@ -142,7 +162,7 @@
 }
 
 /* ======================================================
-   MOBILE NAV
+   MOBILE NAV DEFAULT
 ====================================================== */
 
 .mobile-navigation {
@@ -177,21 +197,26 @@
 
 @media (max-width: 768px) {
   /*
-   * IMPORTANT:
-   * Navigation now participates in document flow.
-   * This pushes the Hero underneath instead of overlaying it.
+   * Mobile navigation stays sticky,
+   * but unlike desktop it uses normal height.
+   *
+   * This pushes the Hero below the navigation.
    */
-  .site-navigation {
-    position: relative;
 
-    top: auto;
-    left: auto;
+  .site-navigation {
+    position: sticky;
+
+    top: 0;
+    left: 0;
 
     width: 100%;
+    height: auto;
 
     padding: 8px;
 
     background: #ffffff;
+
+    z-index: 9999;
 
     pointer-events: auto;
   }
@@ -210,7 +235,9 @@
     pointer-events: auto;
   }
 
-  /* TOP BAR */
+  /* ====================================================
+     TOP BAR
+  ==================================================== */
 
   .mobile-navigation__bar {
     position: relative;
@@ -218,6 +245,7 @@
     z-index: 3;
 
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
@@ -229,12 +257,17 @@
     background: #ffffff;
 
     border-radius: 10px;
+
+    box-shadow: 0 6px 20px rgba(56, 31, 12, 0.05);
   }
 
-  /* LOGO */
+  /* ====================================================
+     LOGO
+  ==================================================== */
 
   .mobile-navigation__logo {
     display: inline-flex;
+
     align-items: baseline;
 
     gap: 4px;
@@ -260,10 +293,13 @@
     font-weight: 500;
   }
 
-  /* BURGER */
+  /* ====================================================
+     BURGER
+  ==================================================== */
 
   .mobile-navigation__toggle {
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
 
@@ -277,6 +313,7 @@
     background: #fff8ee;
 
     border: 0;
+
     border-radius: 8px;
 
     transition:
@@ -294,6 +331,7 @@
 
   .mobile-navigation__burger {
     display: flex;
+
     flex-direction: column;
     justify-content: center;
 
@@ -316,17 +354,21 @@
     transform-origin: center;
   }
 
-  /* DROPDOWN */
+  /* ====================================================
+     DROPDOWN
+  ==================================================== */
 
   .mobile-navigation__menu {
     position: absolute;
 
     top: calc(100% + 6px);
+
     left: 0;
 
     z-index: 20;
 
     display: flex;
+
     flex-direction: column;
 
     width: 100%;
@@ -342,11 +384,13 @@
     box-shadow: 0 16px 35px rgba(55, 30, 10, 0.12);
 
     backdrop-filter: blur(14px);
+
     -webkit-backdrop-filter: blur(14px);
   }
 
   .mobile-navigation__link {
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
