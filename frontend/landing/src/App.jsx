@@ -1,10 +1,20 @@
+import { useCallback, useState } from "react";
+
 import Navigation from "@/components/navigation/navigation";
 
+import StartScreen from "@/components/ui/StartScreen";
+
 import Hero from "@/sections/Hero/Hero";
+
 import Collection from "@/sections/Collection/Collection";
+
 import Services from "@/sections/Services/Services";
+
 import About from "@/sections/About/About";
+
 import Reviews from "@/sections/Reviews/Reviews";
+
+import ScrollProgress from "./components/ui/ScrollProgress";
 
 // import Location from "@/sections/Location/Location";
 // import Contact from "@/sections/Contact/Contact";
@@ -12,6 +22,28 @@ import Reviews from "@/sections/Reviews/Reviews";
 import Footer from "@/sections/Footer/Footer";
 
 const App = () => {
+  const [started, setStarted] = useState(false);
+
+  /* =====================================================
+     START WEBSITE
+  ====================================================== */
+
+  const handleStart = useCallback(() => {
+    setStarted(true);
+  }, []);
+
+  /* =====================================================
+     START SCREEN
+  ====================================================== */
+
+  if (!started) {
+    return <StartScreen onStart={handleStart} />;
+  }
+
+  /* =====================================================
+     MAIN WEBSITE
+  ====================================================== */
+
   return (
     <div
       className="
@@ -24,7 +56,6 @@ const App = () => {
         className="
           w-full
           bg-white
-
           p-0
 
           sm:px-4
@@ -36,9 +67,9 @@ const App = () => {
           lg:pt-5
         "
       >
-        {/* =====================================================
-            MAIN WEBSITE
-        ====================================================== */}
+        {/* =================================================
+            WEBSITE WRAPPER
+        ================================================== */}
 
         <div
           className="
@@ -52,17 +83,9 @@ const App = () => {
 
           <Navigation />
 
-          {/* ===================================================
+          {/* =================================================
               CONTENT
-              
-              MOBILE:
-              Full width
-              No outer padding
-              No rounded corners
-
-              TABLET/DESKTOP:
-              Rounded container
-          =================================================== */}
+          ================================================== */}
 
           <div
             className="
@@ -88,19 +111,24 @@ const App = () => {
             <Reviews />
 
             {/*
-            <Location />
-            <Contact />
+              <Location />
+              <Contact />
             */}
           </div>
         </div>
 
-        {/* =====================================================
+        {/* =================================================
             FOOTER
-            OUTSIDE MAIN ROUNDED WEBSITE
-        ====================================================== */}
+        ================================================== */}
 
         <Footer />
       </main>
+
+      {/* ===================================================
+          SCROLL PROGRESS
+      ==================================================== */}
+
+      <ScrollProgress />
     </div>
   );
 };
